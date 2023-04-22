@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const bcrypt = require("bcrypt");
 const File = require("./models/fileModel");
+const connectDb = require("./config/dbConnect");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -11,8 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 const upload = multer({ dest: process.env.MULTER_DESTINATION_URL });
 const PORT = process.env.PORT || 3000;
 
-
-mongoose.connect(process.env.DATABASE_URL);
+connectDb(process.env.DATABASE_URL)
 
 app.set("view engine", "ejs");
 
