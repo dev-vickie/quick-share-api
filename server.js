@@ -6,11 +6,11 @@ const bcrypt = require("bcrypt");
 const File = require("./models/fileModel");
 const connectDb = require("./config/dbConnect");
 const uploadSingleFile = require("./routes/uploadFileRoute");
+const upload = require("./config/multerConfig");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 
-const upload = multer({ dest: process.env.MULTER_DESTINATION_URL });
 const PORT = process.env.PORT || 3000;
 
 connectDb(process.env.DATABASE_URL)
